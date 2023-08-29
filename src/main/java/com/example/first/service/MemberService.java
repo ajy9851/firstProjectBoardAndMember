@@ -21,5 +21,13 @@ public class MemberService {
                 .build();
     }
 
-
+    @Transactional
+    public MemberUpdateEmailResponseDTO updateEmail(MemberUpdateEmailRequestDTO memberUpdateEmailRequestDTO) {
+        Member member = memberRepository.findByEmail(memberUpdateEmailRequestDTO.getOriginEmail());
+        member.updateEmail(memberUpdateEmailRequestDTO.getNewEmail());
+        memberRepository.save(member);
+        return MemberUpdateEmailResponseDTO.builder()
+                .newEmail(member.getEmail())
+                .build();
+    }
 }
