@@ -1,9 +1,6 @@
 package com.example.first.controller;
 
-import com.example.first.dto.MemberSignUpRequestDTO;
-import com.example.first.dto.MemberSignUpResponseDTO;
-import com.example.first.dto.MemberUpdateEmailRequestDTO;
-import com.example.first.dto.MemberUpdateEmailResponseDTO;
+import com.example.first.dto.*;
 import com.example.first.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.RequestEntity;
@@ -30,5 +27,11 @@ public class MemberController {
     public ResponseEntity updateEmail(@RequestBody MemberUpdateEmailRequestDTO memberUpdateEmailRequestDTO) {
         MemberUpdateEmailResponseDTO memberUpdateEmailResponseDTO = memberService.updateEmail(memberUpdateEmailRequestDTO);
         return ResponseEntity.ok(memberUpdateEmailResponseDTO);
+    }
+
+    @PostMapping("update/pwd")
+    public ResponseEntity updatePwd(@RequestBody MemberUpdatePwdRequestDTO memberUpdatePwdRequestDTO) {
+        MemberUpdatePwdResponseDTO memberUpdatePwdResponseDTO = memberService.updatePwd(memberUpdatePwdRequestDTO);
+        return ResponseEntity.ok(memberUpdatePwdResponseDTO);
     }
 }
