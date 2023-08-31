@@ -26,4 +26,16 @@ public class BoardService {
                 .build();
     }
 
+    @Transactional
+    public BoardReadResponseDTO readBoard(Long boardId) {
+        //읽기만 하는 것이니 .save할 필요 없다.
+        Board board = boardRepository.findByBoardId(boardId);
+        return BoardReadResponseDTO.builder()
+                .boardId(board.getBoardId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .email(board.getMember().getEmail())
+                .build();
+    }
+
 }
