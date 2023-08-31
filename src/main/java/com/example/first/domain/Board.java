@@ -36,7 +36,8 @@ public class Board {
         this.content = content;
     }
 
-    public Member boardSetMember(Member member) {
+    public void boardSetMember(Member member) {
         this.member = member;
+
     }
 }
