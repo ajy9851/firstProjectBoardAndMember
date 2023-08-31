@@ -25,4 +25,5 @@ public class BoardService {
                 .boardId(board.getBoardId())
                 .build();
     }
+
 }
