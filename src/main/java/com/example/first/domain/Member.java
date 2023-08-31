@@ -34,4 +34,8 @@ public class Member {
     public void updateEmail(String newEmail) {
         this.email = newEmail;
     }
+
+    public void updatePwd(String newPwd) {
+        this.pwd = newPwd;
+    }
 }
