@@ -30,4 +30,15 @@ public class MemberService {
                 .newEmail(member.getEmail())
                 .build();
     }
+
+    @Transactional
+    public MemberUpdatePwdResponseDTO updatePwd(MemberUpdatePwdRequestDTO memberUpdatePwdRequestDTO) {
+        Member member = memberRepository.findByEmail(memberUpdatePwdRequestDTO.getEmail());
+        member.updatePwd(memberUpdatePwdRequestDTO.getNewPwd());
+        memberRepository.save(member);
+        return MemberUpdatePwdResponseDTO.builder()
+                .email(member.getEmail())
+                .build();
+
+    }
 }
