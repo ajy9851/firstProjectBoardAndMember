@@ -40,4 +40,8 @@ public class Board {
         this.member = member;
 
     }
+
+    public void updateTitle(String title){
+        this.title = title;
+    }
 }
