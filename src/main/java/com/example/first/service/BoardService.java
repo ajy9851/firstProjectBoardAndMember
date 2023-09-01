@@ -38,4 +38,14 @@ public class BoardService {
                 .build();
     }
 
+    @Transactional
+    public BoardUpdateTitleResponseDTO updateTitle(BoardUpdateTitleRequestDTO boardUpdateTitleRequestDTO) {
+        Board board = boardRepository.findByBoardId(boardUpdateTitleRequestDTO.getBoardId());
+        board.updateTitle(boardUpdateTitleRequestDTO.getNewTitle());
+        boardRepository.save(board);
+        return BoardUpdateTitleResponseDTO.builder()
+                .boardId(board.getBoardId())
+                .title(board.getTitle())
+                .build();
+    }
 }
