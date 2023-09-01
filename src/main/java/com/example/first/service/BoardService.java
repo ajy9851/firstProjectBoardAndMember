@@ -48,4 +48,15 @@ public class BoardService {
                 .title(board.getTitle())
                 .build();
     }
+
+    @Transactional
+    public BoardUpdateContentResponseDTO updateContent(BoardUpdateContentRequestDTO boardUpdateContentRequestDTO) {
+        Board board = boardRepository.findByBoardId(boardUpdateContentRequestDTO.getBoardId());
+        board.updateContent(boardUpdateContentRequestDTO.getContent());
+        boardRepository.save(board);
+        return BoardUpdateContentResponseDTO.builder()
+                .boardId(board.getBoardId())
+                .content(board.getContent())
+                .build();
+    }
 }
