@@ -30,4 +30,10 @@ public class BoardController {
         BoardUpdateTitleResponseDTO boardUpdateTitleResponseDTO = boardService.updateTitle(boardUpdateTitleRequestDTO);
         return ResponseEntity.ok(boardUpdateTitleResponseDTO);
     }
+
+    @PutMapping("/update/content/{boardId}")
+    public ResponseEntity updateContent(@PathVariable Long boardId, @RequestBody BoardUpdateContentRequestDTO boardUpdateContentRequestDTO) {
+        BoardUpdateContentResponseDTO boardUpdateContentResponseDTO = boardService.updateContent(boardUpdateContentRequestDTO);
+        return ResponseEntity.ok(boardUpdateContentResponseDTO);
+    }
 }
