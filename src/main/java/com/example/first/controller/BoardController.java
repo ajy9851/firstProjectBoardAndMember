@@ -1,8 +1,6 @@
 package com.example.first.controller;
 
-import com.example.first.dto.BoardCreateRequestDTO;
-import com.example.first.dto.BoardCreateResponseDTO;
-import com.example.first.dto.BoardReadResponseDTO;
+import com.example.first.dto.*;
 import com.example.first.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +23,11 @@ public class BoardController {
     public ResponseEntity readBoard(@PathVariable Long boardId) {
         BoardReadResponseDTO boardReadResponseDTO = boardService.readBoard(boardId);
         return ResponseEntity.ok(boardReadResponseDTO);
+    }
+
+    @PutMapping("/update/title/{boardId}")
+    public ResponseEntity updateTitle(@PathVariable Long boardId, @RequestBody BoardUpdateTitleRequestDTO boardUpdateTitleRequestDTO) {
+        BoardUpdateTitleResponseDTO boardUpdateTitleResponseDTO = boardService.updateTitle(boardUpdateTitleRequestDTO);
+        return ResponseEntity.ok(boardUpdateTitleResponseDTO);
     }
 }
