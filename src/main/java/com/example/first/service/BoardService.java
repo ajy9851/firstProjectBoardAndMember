@@ -59,4 +59,9 @@ public class BoardService {
                 .content(board.getContent())
                 .build();
     }
+
+    @Transactional
+    public void boardDelete(Long boardId) {
+        boardRepository.deleteById(boardId);
+    }
 }
