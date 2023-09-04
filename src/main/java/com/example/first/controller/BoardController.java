@@ -36,4 +36,12 @@ public class BoardController {
         BoardUpdateContentResponseDTO boardUpdateContentResponseDTO = boardService.updateContent(boardUpdateContentRequestDTO);
         return ResponseEntity.ok(boardUpdateContentResponseDTO);
     }
+
+    @DeleteMapping("/delete/{boardId}")
+    public ResponseEntity deleteBoard(@PathVariable Long boardId){
+        boardService.boardDelete(boardId);
+        return ResponseEntity.ok("succses");
+    }
+
+
 }
